@@ -10,7 +10,7 @@ const Meta = ({ description, lang, meta, keywords, title }) => {
       }}
       title={title}
       defaultTitle={title}
-      titleTemplate={`%s | $title`}
+      titleTemplate={title}
       meta={[
         {
           name: `description`,
@@ -28,10 +28,6 @@ const Meta = ({ description, lang, meta, keywords, title }) => {
           property: `og:type`,
           content: `website`,
         },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
       ].concat(
         keywords.length > 0
           ? {
@@ -48,8 +44,8 @@ Meta.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [],
-  description: `hellooo`,
-  title: `hello`,
+  description: `Personal Website of Mitchell Paterson`,
+  title: `Mitchell Paterson`,
   
 }
 
