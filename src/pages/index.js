@@ -1,9 +1,12 @@
 import React from "react"
-import Container from "../components/container";
-import Hero from "../components/hero"
+import Container from "../components/Container"
+import Hero from "../components/Hero"
+import Page from "../components/Page"
 
 export default () => (
-  <Container>
-    <Hero />
-  </Container>
+  <Page>
+    <Container>
+      <Hero />
+    </Container>
+  </Page>
 )
