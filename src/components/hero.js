@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 
-import media from '../../utils/media'
+import media from '../utils/media'
 
 const Wrapper = styled.div`
     padding-top: 3rem;
