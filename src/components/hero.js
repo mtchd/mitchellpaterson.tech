@@ -49,7 +49,7 @@ const Hero = () => {
     <Wrapper>
       <H1>
         <Sub>Mitchell Paterson —</Sub><br />
-        Software and Systems Engineer.
+        Full Stack Software Developer
       </H1>
       <Description>
         Yes hello is this on?
