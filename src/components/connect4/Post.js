@@ -6,17 +6,16 @@ import Image from "./Image";
 import media from '../../../utils/media'
 
 const Wrapper = styled.div`
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 
   ${media.tablet`
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   `}
 `
 
 const Description = styled.p`
-  margin-top: 2rem;
   line-height: 1.5;
   font-size: 1.125rem;
 
@@ -58,7 +57,7 @@ const Post = ({ data }) => {
       <Row>
         <Col>
           <Description>
-            I made a slackbot that lets you play Connect 4 with your friends! It runs using:
+            I made a bot that lets you play Connect 4 in Slack! You can check out the source code <a href="https://github.com/mtchd/connect4">here</a>. It runs using:
           </Description>
           <TechList />
         </Col>
