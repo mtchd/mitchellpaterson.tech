@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import TechList from './List'
 import Image from "./Image";
-import Container from "../Container"
 
 import media from '../../../utils/media'
 
@@ -51,9 +50,6 @@ const ImgContainer = styled.div`
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 `
-
-
-
 
 // TODO: Make a list ListItems that this loops through?
 const Post = ({ data }) => {
