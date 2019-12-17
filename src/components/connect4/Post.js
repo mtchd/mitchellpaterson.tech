@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import TechList from './List'
 import Image from "./Image";
+import Container from "../Container"
 
 import media from '../../../utils/media'
 
@@ -44,6 +45,15 @@ const Col = styled.div`
   `}
 `
 
+const ImgContainer = styled.div`
+  width: 75%;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+`
+
+
+
 
 // TODO: Make a list ListItems that this loops through?
 const Post = ({ data }) => {
@@ -57,7 +67,9 @@ const Post = ({ data }) => {
           <TechList />
         </Col>
         <Col>
-          <Image data={data}/>
+          <ImgContainer >
+            <Image data={data}/>
+          </ImgContainer>
         </Col>
       </Row>
     </Wrapper>
