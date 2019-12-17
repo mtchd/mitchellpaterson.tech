@@ -3,7 +3,7 @@ import Img from "gatsby-image"
 
 const Image = ({ data }) => (
   <div>
-    <Img fixed={data.file.childImageSharp.fixed} />
+    <Img fluid={data.file.childImageSharp.fluid} />
   </div>
 )
 

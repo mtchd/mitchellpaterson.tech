@@ -19,7 +19,7 @@ const Description = styled.p`
   margin-top: 2rem;
   line-height: 1.5;
   font-size: 1.125rem;
-  
+
   ${media.tablet`
     font-size: 1.5rem;
   `}
@@ -51,13 +51,13 @@ const Post = ({ data }) => {
     <Wrapper>
       <Row>
         <Col>
-        <Description>
-          I made a slackbot that lets you play Connect 4 with your friends! It runs using:
-        </Description>
-        <TechList />
+          <Description>
+            I made a slackbot that lets you play Connect 4 with your friends! It runs using:
+          </Description>
+          <TechList />
         </Col>
         <Col>
-        <Image data={data}/>
+          <Image data={data}/>
         </Col>
       </Row>
     </Wrapper>

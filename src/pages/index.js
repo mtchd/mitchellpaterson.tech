@@ -4,6 +4,7 @@ import Hero from "../components/Hero"
 import Page from "../components/Page"
 import HomeSection from "../components/HomeSection"
 import Post from "../components/connect4/Post"
+import { graphql } from "gatsby"
 
 export default ({data}) => (
   <Page>
@@ -23,12 +24,8 @@ export const query = graphql`
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
-        fixed(width: 125, height: 125) {
-          base64
-          width
-          height
-          src
-          srcSet
+        fluid(maxHeight: 500) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
