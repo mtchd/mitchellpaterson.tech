@@ -19,6 +19,7 @@ const Row = styled.div`
 `
 
 export const Col = styled.div`
+  padding-top: 10rem;
   flex: 1 1 100%;
   max-width: 100%;
   ${media.mobile` 
@@ -39,7 +40,7 @@ export const ImgContainer = styled.div`
 `
 
 // TODO: Make a list ListItems that this loops through?
-export const Post = ({ data, left, right }) => {
+export const Post = ({ left, right }) => {
   return (
     <Row>
       {left}
