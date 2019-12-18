@@ -57,7 +57,7 @@ const Post = ({ data }) => {
       <Row>
         <Col>
           <Description>
-            I made a bot that lets you play Connect 4 in Slack! You can check out the source code <a href="https://github.com/mtchd/connect4">here</a>. It runs using:
+            I made a bot that lets you play Connect 4 in Slack! It's full of various fun things, like using emojis for your token. You can check out the source code <a href="https://github.com/mtchd/connect4">here</a>. It runs using:
           </Description>
           <TechList />
         </Col>
