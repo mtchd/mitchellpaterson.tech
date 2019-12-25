@@ -8,7 +8,7 @@ const ChickenPost = ({ data }) => {
    const left = (
     <Col>
       <Description>
-        This chicken was made entirely in css. Oooo. Thanks to James Formica for the guidance.
+        This chicken was made entirely in css. Oooo. Thanks to James Formica for the guidance. You may pet the chicken...
       </Description>
     </Col>
    )
