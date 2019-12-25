@@ -19,7 +19,7 @@ const Row = styled.div`
 `
 
 export const Col = styled.div`
-  padding-top: 10rem;
+  padding-top: 5rem;
   flex: 1 1 100%;
   max-width: 100%;
   ${media.mobile` 
