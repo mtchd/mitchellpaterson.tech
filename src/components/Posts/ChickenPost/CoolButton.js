@@ -18,8 +18,9 @@ const CoolButton = styled.button`
   line-height: inherit;
   border-color: currentColor;
   top: 40px;
-  left: 38%;
+  left: 50%;
   display: inline-block;
+  transform: translate(-50%, -50%);
   padding-bottom: 0.8rem;
   padding-top: 0.8rem;
   margin-top: 4rem;

@@ -2,6 +2,11 @@ import React from 'react'
 import TechList from '../List'
 import llamaGif from '../../images/fab_llama.gif'
 import {Post, Col, Description, ImgContainer} from '../Post'
+import styled from 'styled-components'
+
+const ScalingGif = styled.img`
+  width: 100%;
+`
 
 const ScalaTalk = ({ data }) => {
 
@@ -27,7 +32,7 @@ const ScalaTalk = ({ data }) => {
    const right = (
     <Col>
       <ImgContainer >
-        <img src={llamaGif} alt="Fabulous Llama" />
+        <ScalingGif src={llamaGif} alt="Fabulous Llama" />
       </ImgContainer>
     </Col>
    )
