@@ -6,7 +6,7 @@ import HomeSection from "../components/HomeSection"
 import Connect4 from "../components/Posts/Connect4"
 import ScalaTalk from "../components/Posts/ScalaTalk"
 import { graphql } from "gatsby"
-import ChickenPost from "../components/Posts/ChickenPost"
+import ChickenPost from "../components/Posts/ChickenPost/ChickenPost"
 
 export default ({data}) => (
   <Page>
@@ -14,7 +14,7 @@ export default ({data}) => (
       <Hero />
     </Container>
 
-    <HomeSection title="Chicken">
+    <HomeSection title="The Great Chicken">
       <ChickenPost />
     </HomeSection>
 

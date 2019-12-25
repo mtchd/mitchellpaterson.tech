@@ -1,6 +1,7 @@
 import React from 'react'
-import Chicken from '../Chicken'
-import {Post, Col, Description} from '../Post'
+import Chicken from '../../Chicken'
+import {Post, Col, Description} from '../../Post'
+import CoolButton from './CoolButton'
 
 const ChickenPost = ({ data }) => {
 
@@ -15,6 +16,7 @@ const ChickenPost = ({ data }) => {
    const right = (
     <Col>
       <Chicken/>
+      <CoolButton/>
     </Col>
    )
 

@@ -16,6 +16,7 @@ export const Description = styled.p`
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 2rem;
 `
 
 export const Col = styled.div`
