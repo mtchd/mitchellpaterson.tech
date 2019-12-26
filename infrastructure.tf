@@ -3,7 +3,7 @@ provider "aws" {
   profile                 = "Chicken"
 }
 
-resource "aws_s3_bucket" "chicken-pets-highscore" {
+resource "aws_s3_bucket" "chicken_pets_highscore" {
   bucket = "chicken-pets-highscore"
   acl    = "private"
 
@@ -71,7 +71,26 @@ resource "aws_iam_policy" "really_insecure" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "test-attach" {
+resource "aws_iam_role_policy_attachment" "test_attach" {
   role       = "${aws_iam_role.iam_for_chicken.name}"
   policy_arn = "${aws_iam_policy.really_insecure.arn}"
+}
+
+# Lambda
+resource "aws_lambda_permission" "put_lambda_permission" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = "${aws_lambda_function.chicken_pets_put.function_name}"
+  principal     = "apigateway.amazonaws.com"
+
+  # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
+  source_arn = "arn:aws:execute-api:${var.myregion}:${var.accountId}:${aws_api_gateway_rest_api.chicken_api.id}/*/${aws_api_gateway_method.put_highscore.http_method}${aws_api_gateway_resource.chicken_resource.path}"
+}
+
+variable "myregion" {
+  default = "ap-southeast-2"
+}
+
+variable "accountId" {
+  default = "271630769548"
 }

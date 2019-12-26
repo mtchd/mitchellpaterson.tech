@@ -10,3 +10,11 @@ def lambda_handler(event, context):
 
     s3 = boto3.resource("s3")
     s3.Bucket(bucket_name).put_object(Key=s3_path, Body=encoded_string)
+
+    return {
+      "statusCode": 200,
+      "headers": {
+          "Content-Type": "application/json"
+      },
+      "body": ""
+    }
