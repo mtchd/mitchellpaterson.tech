@@ -55,12 +55,17 @@ const CoolButton = styled.button`
 
 class Counter extends Component {
   state = {
-    count: 0
+    count: 0,
+    recordCount: 10
   };
   handleClick = () => {
     this.setState(({ count }) => ({
       count: count + 1
     }));
+
+    if (this.state.count > this.state.recordCount) {
+      console.log("broke the record!")
+    }
   };
   render() {
     return <CoolButton onClick={this.handleClick}>Chicken Pets: {this.state.count}</CoolButton>;
