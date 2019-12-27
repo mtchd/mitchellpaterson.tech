@@ -58,6 +58,7 @@ class Counter extends Component {
     count: 0,
     recordCount: 10
   };
+
   handleClick = () => {
     this.setState(({ count }) => ({
       count: count + 1
@@ -65,6 +66,20 @@ class Counter extends Component {
 
     if (this.state.count > this.state.recordCount) {
       console.log("broke the record!")
+      this.setState(({ recordCount }) => ({
+        recordCount: recordCount + 1
+      }));
+
+      fetch('https://baml00sje0.execute-api.ap-southeast-2.amazonaws.com/chicken_prod/chicken_resource', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        highscore: '10'
+      })
+    })
     }
   };
   render() {

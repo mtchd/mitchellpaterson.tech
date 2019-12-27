@@ -1,7 +1,10 @@
 import boto3
 
 def lambda_handler(event, context):
-    string = "10"
+
+    print(event)
+    
+    string = event["highscore"]
     encoded_string = string.encode("utf-8")
 
     bucket_name = "chicken-pets-highscore"
@@ -16,5 +19,5 @@ def lambda_handler(event, context):
       "headers": {
           "Content-Type": "application/json"
       },
-      "body": ""
+      "body": "The bucket put seems to have succeeded."
     }

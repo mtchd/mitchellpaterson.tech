@@ -1,16 +1,3 @@
-provider "aws" {
-  region                  = "ap-southeast-2"
-  profile                 = "Chicken"
-}
-
-resource "aws_s3_bucket" "chicken_pets_highscore" {
-  bucket = "chicken-pets-highscore"
-  acl    = "private"
-
-  tags = {
-    Name = "chicken-pets-highscore"
-  }
-}
 // TODO: Make this role more restrictive
 resource "aws_iam_role" "iam_for_chicken" {
   name = "iam_for_chicken"
@@ -45,6 +32,8 @@ resource "aws_lambda_function" "chicken_pets_put" {
 
   runtime = "python3.8"
 
+  depends_on = ["aws_iam_role_policy_attachment.lambda_logs"]
+
 }
 
 resource "aws_iam_policy" "really_insecure" {
@@ -76,21 +65,32 @@ resource "aws_iam_role_policy_attachment" "test_attach" {
   policy_arn = "${aws_iam_policy.really_insecure.arn}"
 }
 
-# Lambda
-resource "aws_lambda_permission" "put_lambda_permission" {
-  statement_id  = "AllowExecutionFromAPIGateway"
-  action        = "lambda:InvokeFunction"
-  function_name = "${aws_lambda_function.chicken_pets_put.function_name}"
-  principal     = "apigateway.amazonaws.com"
+# See also the following AWS managed policy: AWSLambdaBasicExecutionRole
+resource "aws_iam_policy" "lambda_logging" {
+  name = "lambda_logging"
+  path = "/"
+  description = "IAM policy for logging from a lambda"
 
-  # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
-  source_arn = "arn:aws:execute-api:${var.myregion}:${var.accountId}:${aws_api_gateway_rest_api.chicken_api.id}/*/${aws_api_gateway_method.put_highscore.http_method}${aws_api_gateway_resource.chicken_resource.path}"
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "logs:CreateLogGroup"
+      ],
+      "Resource": "arn:aws:logs:*:*:*",
+      "Effect": "Allow"
+    }
+  ]
+}
+EOF
 }
 
-variable "myregion" {
-  default = "ap-southeast-2"
-}
-
-variable "accountId" {
-  default = "271630769548"
+resource "aws_iam_role_policy_attachment" "lambda_logs" {
+  role = "${aws_iam_role.iam_for_chicken.name}"
+  policy_arn = "${aws_iam_policy.lambda_logging.arn}"
 }
