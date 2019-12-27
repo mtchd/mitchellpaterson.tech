@@ -45,10 +45,17 @@ variable "accountId" {
   default = "271630769548"
 }
 
+variable "stage_name" {
+  default = "chicken_prod"
+}
+
+
 resource "aws_api_gateway_stage" "chicken_stage" {
-  stage_name    = "chicken_prod"
+  stage_name    = "${var.stage_name}"
   rest_api_id   = "${aws_api_gateway_rest_api.chicken_api.id}"
   deployment_id = "${aws_api_gateway_deployment.chicken_deployment.id}"
+
+  depends_on = ["aws_cloudwatch_log_group.chicken_api"]
 }
 
 resource "aws_api_gateway_deployment" "chicken_deployment" {
@@ -56,3 +63,20 @@ resource "aws_api_gateway_deployment" "chicken_deployment" {
   rest_api_id = "${aws_api_gateway_rest_api.chicken_api.id}"
   stage_name  = "chicken_dev"
 }
+
+resource "aws_api_gateway_method_settings" "chicken_put_settings" {
+  rest_api_id = "${aws_api_gateway_rest_api.chicken_api.id}"
+  stage_name  = "${aws_api_gateway_stage.chicken_stage.stage_name}"
+  method_path = "${aws_api_gateway_resource.chicken_resource.path_part}/${aws_api_gateway_method.put_highscore.http_method}"
+
+  settings {
+    metrics_enabled = true
+    logging_level   = "INFO"
+  }
+}
+
+resource "aws_cloudwatch_log_group" "chicken_api" {
+  name              = "API-Gateway-Execution-Logs_${aws_api_gateway_rest_api.chicken_api.id}/${var.stage_name}"
+  retention_in_days = 7
+}
+

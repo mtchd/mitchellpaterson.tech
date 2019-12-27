@@ -3,8 +3,8 @@ import boto3
 def lambda_handler(event, context):
 
     print(event)
-    
-    string = event["highscore"]
+
+    string = event["body"]
     encoded_string = string.encode("utf-8")
 
     bucket_name = "chicken-pets-highscore"
