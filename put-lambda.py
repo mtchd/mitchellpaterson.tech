@@ -17,7 +17,11 @@ def lambda_handler(event, context):
     return {
       "statusCode": 200,
       "headers": {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "X-Requested-With": '*',
+          "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
       },
       "body": "The bucket put seems to have succeeded."
     }

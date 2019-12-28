@@ -16,6 +16,19 @@ resource "aws_api_gateway_method" "put_highscore" {
   authorization = "NONE"
 }
 
+resource "aws_api_gateway_method_response" "response_200" {
+  depends_on  = ["aws_api_gateway_integration.put_lambda_integration"]
+  rest_api_id = "${aws_api_gateway_rest_api.chicken_api.id}"
+  resource_id = "${aws_api_gateway_resource.chicken_resource.id}"
+  http_method = "${aws_api_gateway_method.put_highscore.http_method}"
+  status_code = "200"
+    response_parameters = {
+        "method.response.header.Access-Control-Allow-Origin"= true,
+        "method.response.header.Access-Control-Allow-Headers"= true,
+        "method.response.header.Access-Control-Allow-Methods"= true
+  }
+}
+
 resource "aws_api_gateway_integration" "put_lambda_integration" {
   rest_api_id             = "${aws_api_gateway_rest_api.chicken_api.id}"
   resource_id             = "${aws_api_gateway_resource.chicken_resource.id}"
@@ -54,6 +67,11 @@ resource "aws_api_gateway_stage" "chicken_stage" {
   stage_name    = "${var.stage_name}"
   rest_api_id   = "${aws_api_gateway_rest_api.chicken_api.id}"
   deployment_id = "${aws_api_gateway_deployment.chicken_deployment.id}"
+
+  access_log_settings {
+    destination_arn = "${aws_cloudwatch_log_group.chicken_api.arn}"
+    format = file("${path.module}/access_log_format.json")
+  }
 
   depends_on = ["aws_cloudwatch_log_group.chicken_api"]
 }

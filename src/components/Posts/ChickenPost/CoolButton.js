@@ -75,10 +75,9 @@ class Counter extends Component {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'localhost:8000'
       },
       body: JSON.stringify({
-        highscore: '10'
+        highscore: `${this.state.count}`
       })
     })
     }
