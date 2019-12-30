@@ -60,17 +60,11 @@ class Counter extends Component {
   };
 
   componentDidMount() {
-    console.log("here")
     this.loadData().then( result => {
-      console.log(result)
-      console.log(result.highscore)
-      console.log(parseInt(result.highscore))
       this.setState(({ recordCount }) => ({
         recordCount: parseInt(result.highscore)
       }));
-      console.log(this.state)
     })
-    console.log(this.state)
   }
 
   async loadData() {
@@ -85,10 +79,8 @@ class Counter extends Component {
         highscore: `${this.state.count}`
       })
     }).then(results => {
-      console.log(results)
       return results.json()
     }).then( myjson => {
-      console.log(myjson)
       return myjson
     })
   }
