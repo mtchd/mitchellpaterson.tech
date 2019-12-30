@@ -59,18 +59,23 @@ class Counter extends Component {
     recordCount: 10
   };
 
-  handleClick = () => {
-    this.setState(({ count }) => ({
-      count: count + 1
-    }));
-
-    if (this.state.count > this.state.recordCount) {
-      console.log("broke the record!")
+  componentDidMount() {
+    console.log("here")
+    this.loadData().then( result => {
+      console.log(result)
+      console.log(result.highscore)
+      console.log(parseInt(result.highscore))
       this.setState(({ recordCount }) => ({
-        recordCount: recordCount + 1
+        recordCount: parseInt(result.highscore)
       }));
+      console.log(this.state)
+    })
+    console.log(this.state)
+  }
 
-      fetch('https://baml00sje0.execute-api.ap-southeast-2.amazonaws.com/chicken_prod/chicken_resource', {
+  async loadData() {
+    console.log("loading data")
+    return fetch('https://baml00sje0.execute-api.ap-southeast-2.amazonaws.com/chicken_prod/chicken_resource_get', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -79,11 +84,44 @@ class Counter extends Component {
       body: JSON.stringify({
         highscore: `${this.state.count}`
       })
+    }).then(results => {
+      console.log(results)
+      return results.json()
+    }).then( myjson => {
+      console.log(myjson)
+      return myjson
     })
+  }
+
+  handleClick = () => {
+
+    console.log(this.state)
+    this.setState(({ count }) => ({
+      count: count + 1
+    }));
+
+    if (this.state.count >= this.state.recordCount) {
+      console.log("broke the record!")
+      
+      this.setState(({ recordCount }) => ({
+        recordCount: this.state.count + 1
+      }));
+      this.render()
+
+      fetch('https://baml00sje0.execute-api.ap-southeast-2.amazonaws.com/chicken_prod/chicken_resource', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        highscore: `${this.state.count + 1}`
+      })
+      })
     }
   };
   render() {
-    return <CoolButton onClick={this.handleClick}>Chicken Pets: {this.state.count}</CoolButton>;
+    return <CoolButton onClick={this.handleClick}>Chicken Pets: {this.state.count} Record: {this.state.recordCount}</CoolButton>;
   }
 }
 

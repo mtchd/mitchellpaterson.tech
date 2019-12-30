@@ -16,7 +16,7 @@ resource "aws_api_gateway_method" "put_highscore" {
   authorization = "NONE"
 }
 
-resource "aws_api_gateway_method_response" "response_200" {
+resource "aws_api_gateway_method_response" "put_response_200" {
   depends_on  = ["aws_api_gateway_integration.put_lambda_integration"]
   rest_api_id = "${aws_api_gateway_rest_api.chicken_api.id}"
   resource_id = "${aws_api_gateway_resource.chicken_resource.id}"
@@ -98,3 +98,49 @@ resource "aws_cloudwatch_log_group" "chicken_api" {
   retention_in_days = 7
 }
 
+// Get method and related under here
+
+resource "aws_api_gateway_resource" "chicken_resource_get" {
+  rest_api_id = "${aws_api_gateway_rest_api.chicken_api.id}"
+  parent_id   = "${aws_api_gateway_rest_api.chicken_api.root_resource_id}"
+  path_part   = "chicken_resource_get"
+}
+
+resource "aws_api_gateway_method" "get_highscore" {
+  rest_api_id   = "${aws_api_gateway_rest_api.chicken_api.id}"
+  resource_id   = "${aws_api_gateway_resource.chicken_resource_get.id}"
+  http_method   = "POST"
+  authorization = "NONE"
+}
+
+resource "aws_api_gateway_integration" "get_lambda_integration" {
+  rest_api_id             = "${aws_api_gateway_rest_api.chicken_api.id}"
+  resource_id             = "${aws_api_gateway_resource.chicken_resource_get.id}"
+  http_method             = "${aws_api_gateway_method.get_highscore.http_method}"
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = "${aws_lambda_function.chicken_pets_get.invoke_arn}"
+}
+
+resource "aws_lambda_permission" "get_lambda_permission" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = "${aws_lambda_function.chicken_pets_get.function_name}"
+  principal     = "apigateway.amazonaws.com"
+
+  # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
+  source_arn = "arn:aws:execute-api:${var.myregion}:${var.accountId}:${aws_api_gateway_rest_api.chicken_api.id}/*/${aws_api_gateway_method.get_highscore.http_method}${aws_api_gateway_resource.chicken_resource_get.path}"
+}
+
+resource "aws_api_gateway_method_response" "get_response_200" {
+  depends_on  = ["aws_api_gateway_integration.get_lambda_integration"]
+  rest_api_id = "${aws_api_gateway_rest_api.chicken_api.id}"
+  resource_id = "${aws_api_gateway_resource.chicken_resource_get.id}"
+  http_method = "${aws_api_gateway_method.get_highscore.http_method}"
+  status_code = "200"
+    response_parameters = {
+        "method.response.header.Access-Control-Allow-Origin"= true,
+        "method.response.header.Access-Control-Allow-Headers"= true,
+        "method.response.header.Access-Control-Allow-Methods"= true
+  }
+}
