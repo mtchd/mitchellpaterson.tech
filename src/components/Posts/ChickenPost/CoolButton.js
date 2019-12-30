@@ -68,16 +68,12 @@ class Counter extends Component {
   }
 
   async loadData() {
-    console.log("loading data")
     return fetch('https://baml00sje0.execute-api.ap-southeast-2.amazonaws.com/chicken_prod/chicken_resource_get', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        highscore: `${this.state.count}`
-      })
+      }
     }).then(results => {
       return results.json()
     }).then( myjson => {
@@ -87,13 +83,11 @@ class Counter extends Component {
 
   handleClick = () => {
 
-    console.log(this.state)
     this.setState(({ count }) => ({
       count: count + 1
     }));
 
-    if (this.state.count >= this.state.recordCount) {
-      console.log("broke the record!")
+    if (this.state.count + 1 > this.state.recordCount) {
       
       this.setState(({ recordCount }) => ({
         recordCount: this.state.count + 1
@@ -101,14 +95,14 @@ class Counter extends Component {
       this.render()
 
       fetch('https://baml00sje0.execute-api.ap-southeast-2.amazonaws.com/chicken_prod/chicken_resource', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        highscore: `${this.state.count + 1}`
-      })
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          highscore: `${this.state.count + 1}`
+        })
       })
     }
   };
