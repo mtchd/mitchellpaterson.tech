@@ -52,7 +52,7 @@ const Hero = () => {
         Software and Systems Engineer.
       </H1>
       <Description>
-        Hi, I'm Mitchell Paterson, a software dev currently based in Melbourne, Australia. I'm interested in all things functional programming, full-stack and devops.
+        Hiya, this site is made with Gatsby and react.js with styled components. Scroll down to check out some stuff I've done.
       </Description>
     </Wrapper>
   );
