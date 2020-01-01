@@ -52,7 +52,7 @@ const Hero = () => {
         Software and Systems Engineer.
       </H1>
       <Description>
-        Hiya, this site is made with Gatsby and react.js with styled components. Scroll down to check out some stuff I've done.
+        Hiya, this site is made with Gatsby and React with styled components. Scroll down to check out some stuff I've done.
       </Description>
     </Wrapper>
   );
