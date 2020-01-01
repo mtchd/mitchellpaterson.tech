@@ -14,12 +14,12 @@ export default ({data}) => (
       <Hero />
     </Container>
 
-    <HomeSection title="The Great Chicken">
-      <ChickenPost />
-    </HomeSection>
-
     <HomeSection title="Connect 4">
       <Connect4 data={data}/>
+    </HomeSection>
+
+    <HomeSection title="The Great Chicken">
+      <ChickenPost />
     </HomeSection>
 
     <HomeSection title="Scala Talk">

@@ -15,25 +15,18 @@ const CoolButton = styled.button`
   color: ${props => props.theme.baseTextColour};
   position: relative;
   background: transparent;
-  line-height: inherit;
   border-color: currentColor;
   top: 40px;
   left: 50%;
-  display: inline-block;
   transform: translate(-50%, -50%);
   padding-bottom: 0.8rem;
   padding-top: 0.8rem;
   margin-top: 4rem;
   border-width: medium;
-  transition: color .3s ease-in-out .1s,border-color .3s ease-in-out .1s;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1rem;
   letter-spacing: .6px;
-  margin-left: 2rem;
-  :first-of-type {
-    margin-left: 0;
-  }
   &:after {
     content: "";
     position: absolute;

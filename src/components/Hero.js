@@ -52,7 +52,7 @@ const Hero = () => {
         Software and Systems Engineer.
       </H1>
       <Description>
-        Yes hello is this on?
+        Hi, I'm Mitchell Paterson, a software dev currently based in Melbourne, Australia. I'm interested in all things functional programming, full-stack and devops.
       </Description>
     </Wrapper>
   );

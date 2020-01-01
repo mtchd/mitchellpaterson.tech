@@ -8,7 +8,8 @@ const ChickenPost = ({ data }) => {
    const left = (
     <Col>
       <Description>
-        This chicken was made entirely in css. Oooo. Thanks to James Formica for the guidance. You may pet the chicken...
+        This chicken was made entirely in css. Thanks to James Formica for the guidance. See if you can beat the highscore!
+        The score is saved using a quick and easy backend with AWS: API Gateway, S3 and Lambda.
       </Description>
     </Col>
    )
