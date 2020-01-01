@@ -11,7 +11,7 @@ const activeStyles = css`
   }
 `
 
-const CoolButton = styled.button`
+const ChickenButton = styled.button`
   color: ${props => props.theme.baseTextColour};
   position: relative;
   background: transparent;
@@ -100,7 +100,7 @@ class Counter extends Component {
     }
   };
   render() {
-    return <CoolButton onClick={this.handleClick}>Chicken Pets: {this.state.count} Record: {this.state.recordCount}</CoolButton>;
+    return <ChickenButton onClick={this.handleClick}>Chicken Pets: {this.state.count} Record: {this.state.recordCount}</ChickenButton>;
   }
 }
 
