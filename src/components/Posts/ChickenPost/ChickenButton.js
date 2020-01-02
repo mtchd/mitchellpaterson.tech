@@ -49,7 +49,7 @@ const ChickenButton = styled.button`
 class Counter extends Component {
   state = {
     count: 0,
-    recordCount: 10
+    recordCount: "Loading"
   };
 
   componentDidMount() {
