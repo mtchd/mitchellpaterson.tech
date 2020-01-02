@@ -30,7 +30,7 @@ export default ({data}) => (
 
 export const query = graphql`
   query getImagesQuery {
-    connect4: file(relativePath: { eq: "connect4_tragic.png" }) {
+    connect4: file(relativePath: { eq: "greg-win.png" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
