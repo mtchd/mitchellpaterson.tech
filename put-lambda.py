@@ -32,7 +32,7 @@ def lambda_handler(event, context):
 
     print("Incoming Highscore:", incoming_highscore)
 
-    if (highscore_int + 1 == incoming_highscore):
+    if (incoming_highscore > highscore_int and incoming_highscore < highscore_int + 20):
       
       print("I'm in")
 
