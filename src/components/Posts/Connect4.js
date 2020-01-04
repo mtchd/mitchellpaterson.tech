@@ -19,7 +19,9 @@ const Connect4 = ({ data }) => {
     <Col>
       <Description>
         I made a bot that lets you play Connect 4 in Slack! Its full of various fun things, like using emojis for your token.
-        You can check out the source code <a href="https://github.com/mtchd/connect4">here</a>. It runs using:
+        You can check out the source code <a href="https://github.com/mtchd/connect4">here</a>.
+        Click <a href="https://youtu.be/TlFrnz3iKWk">here</a> to see a video of it in action!
+        It runs using:
       </Description>
       <TechList listItems={technologyList}/>
     </Col>
