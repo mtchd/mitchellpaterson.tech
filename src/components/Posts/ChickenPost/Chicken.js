@@ -30,6 +30,7 @@ const ChickenContainer = styled.div`
   width: 200px;
   height: 100px;
   transform: translate(-50%, -50%);
+  margin-bottom: 1rem;
 `
 
 const Body = styled.div`

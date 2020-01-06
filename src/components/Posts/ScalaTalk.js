@@ -24,7 +24,7 @@ const ScalaTalk = ({ data }) => {
     <Col>
       <Description>
         I gave a talk running over some of the basics of Scala, feel free to check out the <a href="https://mtchd.github.io/scala-talk/#/">slides</a>, and their <a href="https://github.com/mtchd/scala-talk">source code</a>.
-        You can view the recording <a href="https://youtu.be/gtcKmBvcFC0">here</a>.
+        You can view the <a href="https://youtu.be/gtcKmBvcFC0">recording here</a>.
         The talk runs over:
       </Description>
       <TechList listItems={technologyList}/>
