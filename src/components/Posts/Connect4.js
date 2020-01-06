@@ -10,6 +10,14 @@ import Col from './PostComponents/Col'
 // import Greg from '../../images/greg-win.png'
 // <img src={GregWin} alt="Fabulous Greg" style={{ width: '100%' }}/>
 
+const VideoWrapper = styled.div`
+  transform: translate(-6%);
+
+  @media (max-width: 813px) {
+    transform: translate(-0%);
+  }
+`
+
 const VideoDescription = styled(Description)`
   textAlign: center;
   textAlignVertical: center;
@@ -76,10 +84,12 @@ const Connect4 = ({ data }) => {
   return (
     <Container>
       {Post({data, left, right})}
-      <VideoDescription style={{ textAlign: 'center' }}> Here's a video of the game in action, make sure you turn sound on!</VideoDescription>
-      <VideoContainer>
-        <iframe title="Connect4" width="100%" height="100%" src="https://www.youtube.com/embed/TlFrnz3iKWk" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-      </VideoContainer>
+      <VideoWrapper>
+        <VideoDescription style={{ textAlign: 'center' }}> Here's a video of the game in action, make sure you turn sound on!</VideoDescription>
+        <VideoContainer>
+          <iframe title="Connect4" width="100%" height="100%" src="https://www.youtube.com/embed/TlFrnz3iKWk" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        </VideoContainer>
+      </VideoWrapper>
     </Container>
 
   )
