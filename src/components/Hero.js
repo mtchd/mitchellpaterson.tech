@@ -6,6 +6,7 @@ import media from '../utils/media'
 const Wrapper = styled.div`
     padding-top: 3rem;
     padding-bottom: 3rem;
+    margin-bottom: 6rem;
 
   ${media.tablet`
     padding-top: 6rem;

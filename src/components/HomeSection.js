@@ -27,7 +27,7 @@ const ContentWrapper = styled.div`
 `
 
 const Section = styled.section`
-  margin-bottom: 3rem;
+  margin-bottom: 10rem;
 
   :last-child {
     margin-bottom: 0;

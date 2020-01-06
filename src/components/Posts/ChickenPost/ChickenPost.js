@@ -1,7 +1,8 @@
 import React from 'react'
-import Chicken from '../../Chicken'
-import {Post, Col, Description} from '../../Post'
+import Chicken from './Chicken'
+import {Post, Description} from '../PostComponents/Post'
 import ChickenButton from './ChickenButton'
+import Col from '../PostComponents/Col'
 
 const ChickenPost = ({ data }) => {
 

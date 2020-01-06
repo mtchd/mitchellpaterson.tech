@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import media from '../../utils/media'
+import media from '../../../../utils/media'
 
 export const Description = styled.p`
   line-height: 1.5;
@@ -16,28 +16,12 @@ export const Description = styled.p`
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding-bottom: 2rem;
-`
-
-export const Col = styled.div`
+  padding-bottom: 3rem;
   padding-top: 5rem;
-  flex: 1 1 100%;
-  max-width: 100%;
-  ${media.mobile` 
-    flex: 1 1 50%;
-    max-width: 50%;
-  `}
-  ${media.desktop` 
-    flex: 1 1 50%;
-    max-width: 50%;
-  `}
-`
 
-export const ImgContainer = styled.div`
-  width: 75%;
-  margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  @media (max-width: 768px) {
+    padding-top: 3rem;
+  }
 `
 
 // TODO: Make a list ListItems that this loops through?

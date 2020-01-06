@@ -1,8 +1,10 @@
 import React from 'react'
-import TechList from '../List'
+import TechList from './PostComponents/List'
 import llamaGif from '../../images/fab_llama.gif'
-import {Post, Col, Description, ImgContainer} from '../Post'
+import {Post, Description} from './PostComponents/Post'
 import styled from 'styled-components'
+import ImgContainer from './PostComponents/ImgContainer'
+import Col from './PostComponents/Col'
 
 const ScalingGif = styled.img`
   width: 100%;
