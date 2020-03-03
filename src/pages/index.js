@@ -7,12 +7,16 @@ import Connect4 from "../components/Posts/Connect4"
 import ScalaTalk from "../components/Posts/ScalaTalk"
 import { graphql } from "gatsby"
 import ChickenPost from "../components/Posts/ChickenPost/ChickenPost"
+import Corgi from "../components/Corgi"
+import CorgiRoad from "../components/CorgiRoad"
 
 export default ({data}) => (
   <Page>
     <Container>
       <Hero />
     </Container>
+
+    <CorgiRoad numCorgis={2} />
 
     <HomeSection title="Connect 4">
       <Connect4 data={data}/>
