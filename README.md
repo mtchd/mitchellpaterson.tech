@@ -5,3 +5,21 @@
 Source for my personal website [mitchellpaterson.tech](https://blissful-colden-961808.netlify.com)
 
 Inspired by https://aaronvanston.tech/
+
+## Getting Started
+
+Developing locally:
+
+```
+yarn
+yarn develop
+```
+
+Simply pushing changes to master branch will publish them on the website, given the netlify CI succeeds.
+
+## Tech Stack
+
+ - React
+ - Gatsby
+ - Styled Components
+ - Netlify
