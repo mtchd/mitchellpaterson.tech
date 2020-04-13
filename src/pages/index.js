@@ -16,8 +16,6 @@ export default ({data}) => (
       <Hero />
     </Container>
 
-    <CorgiRoad numCorgis={2} />
-
     <HomeSection title="Connect 4">
       <Connect4 data={data}/>
     </HomeSection>
